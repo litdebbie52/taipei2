@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台北・台南旅行行程</title>
+<style>
+:root{--bg:#f7f5ef;--card:#fff;--text:#303030;--sub:#777;--accent:#7c9a92;--accent-light:#e4eee9;--orange:#d99a68;--line:#dfe5e1;--shadow:0 8px 25px rgba(0,0,0,.07)}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--text)}
+.hero{padding:55px 20px 45px;text-align:center;background:linear-gradient(135deg,#e7eee9,#f7f5ef)}.hero .small{font-size:13px;letter-spacing:3px;color:var(--accent);margin-bottom:12px}.hero h1{margin:0;font-size:clamp(30px,6vw,52px);font-weight:700;letter-spacing:2px}.hero p{margin:15px 0 0;color:var(--sub)}
+.day-nav{position:sticky;top:0;z-index:10;display:flex;gap:8px;overflow-x:auto;padding:12px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.day-nav button{flex:0 0 auto;border:0;background:#f0f2ef;color:#555;padding:9px 15px;border-radius:20px;cursor:pointer;font-size:13px}.day-nav button.active{background:var(--accent);color:#fff}
+.container{width:min(900px,calc(100% - 30px));margin:30px auto 70px}.day{background:var(--card);border-radius:24px;margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:70px}.day-header{padding:22px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:15px}.day-header-left{display:flex;align-items:center;gap:15px}.date{min-width:58px;height:58px;border-radius:18px;background:var(--accent-light);color:var(--accent);display:flex;flex-direction:column;justify-content:center;align-items:center;font-weight:bold}.date strong{font-size:20px}.date span{font-size:11px}.day-title h2{margin:0 0 5px;font-size:20px}.day-title p{margin:0;color:var(--sub);font-size:13px}.arrow{transition:transform .3s;font-size:20px}.day.collapsed .arrow{transform:rotate(-90deg)}.day.collapsed .day-content{display:none}.day-content{padding:0 24px 25px}
+.progress-area{margin-bottom:20px}.progress-top{display:flex;justify-content:space-between;color:var(--sub);font-size:12px;margin-bottom:7px}.progress{height:7px;border-radius:10px;background:#edf0ed;overflow:hidden}.progress-bar{height:100%;width:0;background:var(--accent);transition:width .3s}
+.timeline{position:relative;padding-left:35px}.timeline:before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:2px;background:var(--line)}.item{position:relative;padding:0 0 22px}.item:last-child{padding-bottom:0}.dot{position:absolute;left:-31px;top:4px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--accent);z-index:2}.item.completed .dot{background:var(--accent)}.item-card{border:1px solid #edf0ed;border-radius:16px;padding:14px 15px;transition:.2s}.item-card:hover{box-shadow:0 5px 15px rgba(0,0,0,.05);transform:translateY(-1px)}.item.completed .item-card{background:#f5f8f6;opacity:.7}.item.completed .activity{text-decoration:line-through}.time{display:inline-block;font-size:12px;color:var(--orange);font-weight:600;margin-bottom:5px}.activity-row{display:flex;align-items:flex-start;gap:10px}.checkbox{width:20px;height:20px;flex:0 0 20px;margin-top:1px;cursor:pointer;accent-color:var(--accent)}.activity{font-size:15px;line-height:1.6;flex:1}.map-btn{border:0;background:var(--accent-light);color:var(--accent);border-radius:10px;padding:5px 9px;cursor:pointer;font-size:11px;white-space:nowrap}.map-btn:hover{background:var(--accent);color:#fff}.notes{margin-top:20px;padding:15px;background:#faf9f5;border-radius:15px}.notes-title{font-size:13px;margin-bottom:8px;color:#666}.notes textarea{width:100%;min-height:70px;border:1px solid #e5e5e5;border-radius:10px;padding:10px;resize:vertical;font-family:inherit;background:#fff}.footer{text-align:center;color:#999;font-size:12px;padding:20px}
+@media(max-width:600px){.hero{padding:40px 15px 35px}.container{width:calc(100% - 20px);margin-top:20px}.day-header{padding:18px}.day-content{padding:0 18px 20px}.day-title h2{font-size:17px}.date{min-width:52px;height:52px}.timeline{padding-left:29px}.dot{left:-25px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="small">TAIPEI · TAINAN</div><h1>台北・台南小旅行</h1><p>13/10 — 16/10 · 4 Days</p></header>
+<nav class="day-nav">
+<button class="active" onclick="scrollToDay('day1',this)">13/10</button><button onclick="scrollToDay('day2',this)">14/10</button><button onclick="scrollToDay('day3',this)">15/10</button><button onclick="scrollToDay('day4',this)">16/10</button>
+</nav>
+<main class="container" id="days"></main>
+<footer class="footer">台北 → 台南 · Have a nice trip ✈️</footer>
+<script>
+const days=[
+{d:"13",w:"週二",title:"落機日",sub:"抵達台北・士林夜市",items:[
+["09:50","落機 CX488"],["～11:00","機場捷運到市區","台北車站"],["12:30–14:00","自由活動"],["14:00–15:00","討酒吧買手信<br><small>⚠️ 7pm 前到達</small>","討酒吧 台北"],["～16:00","小隱居 Check-in","小隱居 台北"],["18:00–21:00","士林夜市","士林夜市"]]},
+{d:"14",w:"週三",title:"中山區",sub:"早餐・赤峰街・豆花・中山晚飯",items:[
+["08:30–09:30","晴光商圈早餐","晴光商圈"],["09:30–10:30","赤峰街文青散步","赤峰街 台北"],["10:30–11:15","麵線傳奇","麵線傳奇 台北"],["11:15–12:00","榕美樹館豆花","榕美樹館豆花"],["12:00–18:00","自由活動"],["18:30","青花驕中山北店晚飯<br><small>⚠️ 建議提早訂位</small>","青花驕中山北店"]]},
+{d:"15",w:"週四",title:"大安・永康街",sub:"湯包・手信・永康街散步",items:[
+["12:00–13:30","上海邵師傅湯包午飯","上海邵師傅湯包"],["13:30–13:50","小小餐館<br><small>🛍️ 買蒜蓉脆餅手信・快閃</small>","小小餐館 台北"],["13:50–14:15","搭捷運／步行到東門站","東門站 台北"],["14:15–17:30","永康街散步、食嘢、逛小店","永康街 台北"],["晚上","自由活動・慢慢返酒店休息"]]},
+{d:"16",w:"週五",title:"準備出發台南",sub:"退房・買手信・高鐵・台南 Meet Up",items:[
+["09:00–10:00","早餐／收拾"],["10:00–10:30","退房"],["10:30–11:00","灑白甜（大同店）手信","灑白甜 大同店"],["11:00–11:40","前往台北高鐵站","台北車站 高鐵"],["～12:00","搭高鐵去台南","台南高鐵站"],["13:30–14:00","抵達台南"],["14:00–16:00","前往南岸山民宿","南岸山 台南 民宿"],["16:00–17:00","同朋友 Meet Up 🤍"]]}
+];
+const daysEl=document.getElementById("days");
+days.forEach((day,di)=>{
+ const sec=document.createElement("section");sec.className="day";sec.id="day"+(di+1);
+ sec.innerHTML=`<div class="day-header" onclick="toggleDay(this)"><div class="day-header-left"><div class="date"><strong>${day.d}</strong><span>${day.w}</span></div><div class="day-title"><h2>${day.title}</h2><p>${day.sub}</p></div></div><div class="arrow">⌄</div></div>
+ <div class="day-content"><div class="progress-area"><div class="progress-top"><span>今日完成度</span><span class="progress-text">0 / ${day.items.length}</span></div><div class="progress"><div class="progress-bar"></div></div></div><div class="timeline"></div>
+ <div class="notes"><div class="notes-title">📝 今日備註</div><textarea placeholder="記低餐廳、購物、朋友集合地點等等……" data-note="day${di+1}"></textarea></div></div>`;
+ const tl=sec.querySelector(".timeline");
+ day.items.forEach((it,ii)=>{
+   const el=document.createElement("div");el.className="item";
+   el.innerHTML=`<span class="dot"></span><div class="item-card"><span class="time">${it[0]}</span><div class="activity-row"><input class="checkbox" type="checkbox"><div class="activity">${it[1]}</div>${it[2]?`<button class="map-btn" onclick="openMap('${it[2].replace(/'/g,"\\'")}')">📍 地圖</button>`:""}</div></div>`;
+   const cb=el.querySelector(".checkbox"),key=`trip-check-${di}-${ii}`;cb.checked=localStorage.getItem(key)==="true";if(cb.checked)el.classList.add("completed");
+   cb.addEventListener("change",()=>{localStorage.setItem(key,cb.checked);el.classList.toggle("completed",cb.checked);updateProgress(sec)});
+   tl.appendChild(el);
+ });
+ const ta=sec.querySelector("textarea"),nk=`trip-note-day${di+1}`;ta.value=localStorage.getItem(nk)||"";ta.addEventListener("input",()=>localStorage.setItem(nk,ta.value));
+ daysEl.appendChild(sec);updateProgress(sec);
+});
+function toggleDay(h){h.parentElement.classList.toggle("collapsed")}
+function scrollToDay(id,b){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});document.querySelectorAll(".day-nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active")}
+function openMap(p){window.open("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p),"_blank")}
+function updateProgress(day){const all=day.querySelectorAll(".checkbox"),done=day.querySelectorAll(".checkbox:checked").length;day.querySelector(".progress-bar").style.width=(done/all.length*100)+"%";day.querySelector(".progress-text").textContent=done+" / "+all.length}
+</script>
+</body>
+</html>
